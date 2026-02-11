@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subject Profile: The Kinetic K9</title>
+    <title>Pet Avengers: Squad Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Custom Font Application */
         body { font-family: 'Roboto', sans-serif; }
         
-        /* Palette: Vibrant Energetic (Orange, Blue, Yellow) */
+        /* Universal Vibrant Palette */
         :root {
-            --color-primary: #FF6B6B;   /* Vibrant Coral/Red */
-            --color-secondary: #4ECDC4; /* Teal/Blue */
-            --color-accent: #FFE66D;    /* Sunny Yellow */
-            --color-dark: #292F36;      /* Dark Blue-Grey */
-            --color-light: #F7FFF7;     /* Off-white */
+            --socks-color: #FF6B6B;
+            --jake-color: #8E44AD;
+            --cleo-color: #E91E63;
+            --synergy-color: #4ECDC4;
+            --dark-bg: #292F36;
         }
 
-        /* Chart Container Styling (Mandatory) */
         .chart-container {
             position: relative;
             width: 100%;
@@ -36,235 +32,229 @@
             height: 350px; 
             max-height: 400px;
         }
-        @media (max-width: 640px) {
-            .chart-container {
-                height: 300px;
-            }
+
+        .hero-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Custom Timeline Styling */
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 100%;
-            background-color: var(--color-secondary);
-            z-index: 0;
-        }
-
-        /* Card Hover Effects */
-        .stat-card {
-            transition: transform 0.2s ease-in-out;
-        }
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Hero Image Styling */
-        .hero-glow {
-            box-shadow: 0 0 30px rgba(78, 205, 196, 0.4);
-        }
-        
         .terminal-box {
             background-color: #1a1c1e;
-            border-left: 4px solid var(--color-accent);
             padding: 1rem;
             font-family: monospace;
-            color: #4ECDC4;
             font-size: 0.875rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Animated scanner line effect */
+        .scanner-line {
+            height: 2px;
+            width: 100%;
+            background: var(--synergy-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 3s linear infinite;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
         }
     </style>
     <!-- 
-        Confirmations:
-        NO SVG used.
-        NO Mermaid JS used.
-        All diagrams built with HTML/CSS.
-        Charts use Canvas via Chart.js/Plotly.
+        Palette Choice: "Energetic & Playful" 
+        Confirmation: NO SVG, NO MERMAID JS used.
+        All string labels > 16 characters are processed into arrays.
+        Tooltip config includes mandatory title callback.
     -->
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-slate-50 text-slate-900">
 
-    <!-- Header Section -->
-    <header class="bg-[#292F36] text-white shadow-lg sticky top-0 z-50 border-b-4 border-[#FF6B6B]">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <!-- Header -->
+    <header class="bg-[#292F36] text-white shadow-2xl border-b-4 border-[#F1C40F] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <h1 class="text-3xl font-black tracking-wider uppercase"><span class="text-[#4ECDC4]">Project:</span> SOCKS</h1>
-                <p class="text-sm text-gray-400">Codename: The Kinetic K9 | Clearance: Top Secret</p>
+                <h1 class="text-3xl font-black tracking-tighter uppercase">
+                    <span class="text-[#4ECDC4]">PET</span> AVENGERS
+                </h1>
+                <p class="text-xs text-gray-400 font-mono tracking-widest">UNIT: DOMESTIC_DEFENSE_SQUAD</p>
             </div>
-            <div class="hidden md:block text-right">
-                <span class="bg-[#FF6B6B] px-3 py-1 rounded text-xs font-bold uppercase tracking-widest block">Status: Active</span>
-                <span class="text-[10px] text-gray-500 font-mono">FILE_ID: 092-BETA</span>
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden sm:block">
+                    <p class="text-[10px] uppercase font-bold text-[#4ECDC4]">System Status</p>
+                    <p class="text-sm font-mono text-green-400">● ALL_OPERATIVES_ACTIVE</p>
+                </div>
+                <div class="h-10 w-1 bg-gray-700 hidden sm:block"></div>
+                <div class="bg-gray-800 px-4 py-2 rounded border border-gray-700">
+                    <span class="text-[#F1C40F] font-black italic">AETHER-TECH</span>
+                </div>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-16">
 
-        <!-- Section 1: Hero Visualization & Hook -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div class="lg:col-span-5 order-2 lg:order-1 space-y-6">
-                <div class="bg-white rounded-xl shadow-md p-8 border-l-8 border-[#FFE66D]">
-                    <h2 class="text-2xl font-bold mb-4 text-[#292F36]">Subject Overview</h2>
-                    <p class="text-lg leading-relaxed text-gray-600 mb-4">
-                        To the civilian population, Subject "Socks" appears to be a standard mixed-breed canine with a propensity for clumsiness and a tongue that defies containment. This "Derp Factor" is his primary camouflage.
-                    </p>
-                    <p class="text-lg leading-relaxed text-gray-600">
-                        Following exposure to mutagenic toxins at the Sector 7 Bio-Refineries, the subject evolved into a <strong>living kinetic battery</strong>. This dossier quantifies his physiological anomalies and power output.
-                    </p>
-                </div>
-                <div class="terminal-box">
-                    <div class="text-[#FFE66D] mb-1 font-bold">> INITIALIZING FIELD SENSORS...</div>
-                    <div>> KINETIC_RESONANCE: STABLE</div>
-                    <div>> JAW_CLACK_FREQUENCY: 440Hz</div>
-                    <div>> TARGET_LOCK: TENNIS_BALL_01</div>
-                </div>
+        <!-- Squad Grid -->
+        <section class="space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-4xl font-black text-gray-800 uppercase italic">Operative Selection</h2>
+                <p class="text-gray-500">Accessing secure dossiers for the Domestic Defense Squad</p>
             </div>
-            <div class="lg:col-span-7 order-1 lg:order-2">
-                <div class="relative group">
-                    <!-- Hero Image Component -->
-                    <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl hero-glow border-4 border-[#4ECDC4]">
-                        <img 
-                            src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Socks.jpg" 
-                            alt="Socks the Kinetic K9" 
-                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                            onload="this.style.opacity='1';"
-                            style="opacity: 0; transition: opacity 0.5s;"
-                        >
-                    </div>
-                    <!-- Comic Label -->
-                    <div class="absolute bottom-6 left-6 bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-black text-2xl italic skew-x-[-12deg] shadow-lg border-2 border-white">
-                        SNAP-CLACK!
-                    </div>
-                    <div class="absolute top-4 right-4 bg-[#292F36] text-[#4ECDC4] px-3 py-1 rounded font-mono text-xs border border-[#4ECDC4]">
-                        REC_772_SECTOR_7
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Section 2: Core Metrics Row -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="bg-[#4ECDC4] rounded-xl shadow-md p-8 text-white flex flex-col justify-center items-center text-center stat-card">
-                <div class="text-6xl font-black mb-2">∞</div>
-                <div class="text-xl font-bold uppercase tracking-wide">Energy Potential</div>
-                <p class="mt-2 text-sm opacity-90">Kinetic absorption capacity is theoretically limitless.</p>
-            </div>
-            <div class="bg-[#292F36] rounded-xl shadow-md p-8 text-[#FFE66D] flex flex-col justify-center items-center text-center stat-card">
-                <div class="text-6xl font-black mb-2">99%</div>
-                <div class="text-xl font-bold uppercase tracking-wide">Stealth Rating</div>
-                <p class="mt-2 text-sm opacity-90">Subject's "Derpy Look" successfully fools 99.8% of observers.</p>
-            </div>
-            <div class="bg-[#FF6B6B] rounded-xl shadow-md p-8 text-white flex flex-col justify-center items-center text-center stat-card">
-                <div class="text-6xl font-black mb-2">ZERO</div>
-                <div class="text-xl font-bold uppercase tracking-wide">Paw Compliance</div>
-                <p class="mt-2 text-sm opacity-90">Touch tolerance for feet remains at non-existent levels.</p>
-            </div>
-        </section>
-
-        <!-- Section 3: Origin Timeline -->
-        <section>
-            <div class="mb-6">
-                <h2 class="text-2xl font-bold text-[#292F36] border-b-2 border-gray-200 pb-2">The Origin Sequence</h2>
-                <p class="mt-2 text-gray-600">Reconstruction of the events leading to the "Sector 7" transformation.</p>
-            </div>
-            
-            <div class="relative py-10">
-                <div class="hidden md:block timeline-line rounded-full"></div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
-                    <!-- Event 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#292F36]">
-                        <h3 class="font-bold text-lg text-[#FF6B6B]">Phase 1: Birth</h3>
-                        <p class="text-xs text-gray-500 font-mono mb-2">Location: Sector 7 Bio-Refineries</p>
-                        <p class="text-sm">Subject born to stray population within industrial shadow zones.</p>
-                    </div>
-                    <div></div>
-                    <div></div>
-                    <!-- Event 2 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md md:ml-10 relative border-t-4 border-[#FF6B6B]">
-                        <h3 class="font-bold text-lg text-[#292F36]">Phase 2: The Incident</h3>
-                        <p class="text-xs text-gray-500 font-mono mb-2">Event: Toxic Spill</p>
-                        <p class="text-sm">Subject exposed to mutagenic refinery toxins while still a "wee pup".</p>
-                    </div>
-                    <!-- Event 3 -->
-                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#FFE66D]">
-                        <h3 class="font-bold text-lg text-[#292F36]">Phase 3: The Catalyst</h3>
-                        <p class="text-xs text-gray-500 font-mono mb-2">Intervention: Lab Technician</p>
-                        <p class="text-sm">Rescued and bottle-fed specialized bio-synthetic formula. Interaction triggers evolution.</p>
-                    </div>
-                    <div></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section 4: Power Analysis -->
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#292F36] mb-2">Combat Capability Matrix</h3>
-                <div class="chart-container">
-                    <canvas id="powerRadarChart"></canvas>
-                </div>
-            </div>
-            <div class="bg-white rounded-xl shadow-md p-6">
-                <h3 class="text-xl font-bold text-[#292F36] mb-2">Daily Kinetic Output Cycle</h3>
-                <div id="energyScatterPlot" class="w-full h-[350px]"></div>
-            </div>
-        </section>
-
-        <!-- Section 5: Adversary Engagement -->
-        <section class="bg-white rounded-xl shadow-md p-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="md:col-span-1">
-                    <h3 class="text-2xl font-bold text-[#292F36] mb-4">Adversary Engagement</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed">
-                        Operational history indicates a high degree of success against organic targets. Mechanical devices emitting high-frequency noise (e.g., Vacuums) cause immediate tactical withdrawal.
+                <!-- SOCKS -->
+                <a href="Socks_The_Kinetic_K9_Dossier.html" class="hero-card block group bg-white rounded-3xl shadow-xl overflow-hidden border-b-8 border-[#FF6B6B] relative">
+                    <div class="scanner-line"></div>
+                    <div class="h-72 overflow-hidden bg-gray-200">
+                        <img src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Socks.jpg" alt="Socks" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-black text-[#292F36]">SOCKS</h3>
+                            <span class="bg-[#FF6B6B] text-white text-[10px] px-2 py-1 rounded font-bold">KINETIC</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic mb-4">"The White-Paw Wonder"</p>
+                        <div class="terminal-box text-[#FF6B6B]/80 text-[11px] leading-tight">
+                            > ORIGIN: SECTOR 7 <br>
+                            > JAW_CLACK: ARMED <br>
+                            > VIEW_DOSSIER [CLICK]
+                        </div>
+                    </div>
+                </a>
+
+                <!-- JAKE -->
+                <a href="Jake_The_Vibration_Vanguard.html" class="hero-card block group bg-white rounded-3xl shadow-xl overflow-hidden border-b-8 border-[#8E44AD] relative">
+                    <div class="scanner-line"></div>
+                    <div class="h-72 overflow-hidden bg-gray-200">
+                        <img src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Jake.png" alt="Jake" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-black text-[#292F36]">JAKE</h3>
+                            <span class="bg-[#8E44AD] text-white text-[10px] px-2 py-1 rounded font-bold">VANGUARD</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic mb-4">"The Wildwood Survivor"</p>
+                        <div class="terminal-box text-[#8E44AD]/80 text-[11px] leading-tight">
+                            > ORIGIN: WILDWOOD <br>
+                            > VIBE_CHECK: ACTIVE <br>
+                            > VIEW_DOSSIER [CLICK]
+                        </div>
+                    </div>
+                </a>
+
+                <!-- CLEO -->
+                <a href="Cleo_The_Shadow_Overlord.html" class="hero-card block group bg-white rounded-3xl shadow-xl overflow-hidden border-b-8 border-[#E91E63] relative">
+                    <div class="scanner-line"></div>
+                    <div class="h-72 overflow-hidden bg-gray-200">
+                        <img src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Gemini_Generated_Image_w2qtcew2qtcew2qt.png" alt="Cleo" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-black text-[#292F36]">CLEO</h3>
+                            <span class="bg-[#E91E63] text-white text-[10px] px-2 py-1 rounded font-bold">OVERLORD</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic mb-4">"Supreme House Dictator"</p>
+                        <div class="terminal-box text-[#E91E63]/80 text-[11px] leading-tight">
+                            > ORIGIN: BOTTLE-FED <br>
+                            > TOE_CRUNCH: ARMED <br>
+                            > VIEW_DOSSIER [CLICK]
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Squad Synergy Analysis -->
+        <section class="bg-white rounded-3xl shadow-2xl p-8 border-t-8 border-[#4ECDC4]">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <div class="lg:w-1/2 space-y-6">
+                    <h2 class="text-3xl font-black text-[#292F36] uppercase tracking-tighter italic">Squad Synergy Analysis</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Data modeling indicates that the Domestic Defense Squad operates as a balanced tactical unit. While <span class="text-[#E91E63] font-bold">Cleo</span> provides 100% of the strategic oversight (and psychological intimidation), <span class="text-[#FF6B6B] font-bold">Socks</span> acts as the primary kinetic heavy-hitter. <span class="text-[#8E44AD] font-bold">Jake</span> serves as the squad's reconnaissance and early-warning system.
                     </p>
-                    <div class="mt-6 space-y-2">
-                        <div class="flex items-center justify-between text-xs font-bold uppercase tracking-widest text-gray-400">
-                            <span>Target Type</span>
-                            <span>Success Rate</span>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-[#FF6B6B]">
+                            <span class="text-xs uppercase font-black text-gray-400">Total Mass</span>
+                            <div class="text-2xl font-black text-[#292F36]">~45.0 KG</div>
                         </div>
-                        <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                            <div class="bg-[#4ECDC4] h-full" style="width: 95%"></div>
+                        <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-[#4ECDC4]">
+                            <span class="text-xs uppercase font-black text-gray-400">Synergy Index</span>
+                            <div class="text-2xl font-black text-[#292F36]">9.8 / 10</div>
                         </div>
-                        <p class="text-[10px] text-gray-400">ORGANIC THREATS: 95% Neutralized</p>
+                    </div>
+                    <div class="terminal-box text-[#4ECDC4]">
+                        <div class="text-[10px] mb-1 opacity-50 uppercase tracking-widest">Global Sibling Parameters</div>
+                        <div>> SOCKS_TO_JAKE_SYNERGY: OPTIMAL</div>
+                        <div>> JAKE_TO_CLEO_SUBMISSION: 100%</div>
+                        <div>> CLEO_TO_DOGS_BULLYING: CONTINUOUS</div>
                     </div>
                 </div>
-                <div class="md:col-span-2">
-                     <div class="chart-container">
-                        <canvas id="missionBarChart"></canvas>
+                <div class="lg:w-1/2 w-full">
+                    <div class="chart-container">
+                        <canvas id="squadRadarChart"></canvas>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 6: Weaknesses & Features -->
-        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-             <div class="bg-white rounded-xl shadow-md p-6 h-full">
-                <h3 class="text-xl font-bold text-[#292F36] mb-2">Vulnerability Analysis</h3>
+        <!-- Threat Neutralization Progress -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-3xl shadow-xl">
+                <h3 class="text-xl font-black mb-6 uppercase tracking-tighter italic text-[#292F36]">Collective Strength Distribution</h3>
                 <div class="chart-container">
-                    <canvas id="weaknessDonutChart"></canvas>
+                    <canvas id="strengthBarChart"></canvas>
                 </div>
             </div>
-            <div class="space-y-6">
-                 <div class="bg-[#292F36] text-white p-6 rounded-xl shadow-lg border-l-8 border-[#FF6B6B]">
-                    <h4 class="text-lg font-bold text-[#FFE66D] mb-1">Seismic Anchors (Paws)</h4>
-                    <p class="text-xs font-light opacity-80">Contacts for grounding energy. Extremely sensitive to human touch; touch triggers immediate defensive "huff".</p>
-                 </div>
-                 <div class="bg-[#292F36] text-white p-6 rounded-xl shadow-lg border-l-8 border-[#4ECDC4]">
-                    <h4 class="text-lg font-bold text-[#4ECDC4] mb-1">Cooling Array (Tongue)</h4>
-                    <p class="text-xs font-light opacity-80">Passive thermal regulation. Permanent lateral displacement allows for continuous core venting during high-energy states.</p>
-                 </div>
+            <div class="bg-[#292F36] p-8 rounded-3xl shadow-xl text-white">
+                <h3 class="text-xl font-black mb-6 uppercase tracking-tighter italic text-[#4ECDC4]">Active Mission Log</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-lg border-l-4 border-[#FF6B6B]">
+                        <div class="text-2xl">🦴</div>
+                        <div>
+                            <p class="font-black text-sm uppercase">Operation: Backyard Perimeter</p>
+                            <p class="text-[10px] text-gray-400 font-mono">STATUS: SUCCESS (SOCKS SECURED THE BONE)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-lg border-l-4 border-[#8E44AD]">
+                        <div class="text-2xl">🦗</div>
+                        <div>
+                            <p class="font-black text-sm uppercase">Operation: Chitin Harvest</p>
+                            <p class="text-[10px] text-gray-400 font-mono">STATUS: IN_PROGRESS (JAKE DETECTED VIBRATION)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-lg border-l-4 border-[#E91E63]">
+                        <div class="text-2xl">🍲</div>
+                        <div>
+                            <p class="font-black text-sm uppercase">Operation: Bowl Replenishment</p>
+                            <p class="text-[10px] text-gray-400 font-mono">STATUS: CRITICAL_FAILURE (CLEO SEES BOTTOM)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 bg-gray-800 p-3 rounded-lg border-l-4 border-[#F1C40F]">
+                        <div class="text-2xl">🦶</div>
+                        <div>
+                            <p class="font-black text-sm uppercase">Operation: Toe Neutralization</p>
+                            <p class="text-[10px] text-gray-400 font-mono">STATUS: IMMINENT (CLEO HAS LOCK-ON)</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-
-        <footer class="text-center py-10 text-gray-500 border-t border-gray-200 mt-8">
-            <p>&copy; 2023 Aether-Tech Facility Archives | Bio-Subject: "Socks"</p>
-        </footer>
 
     </main>
 
+    <footer class="text-center py-20 text-slate-400 border-t border-slate-200">
+        <p class="text-xs uppercase font-bold tracking-widest">&copy; 2023 Aether-Tech Facility Archives</p>
+        <p class="text-[10px] font-mono mt-2 uppercase">Subject ID: [SOCKS, JAKE, CLEO] | Unit: Domestic_Defense_Squad</p>
+    </footer>
+
     <script>
+        // --- UTILITY: Label Wrapping (Mandatory) ---
         function wrapLabel(str, maxChars) {
             if (str.length <= maxChars) return str;
             const words = str.split(' ');
@@ -282,92 +272,105 @@
             return lines;
         }
 
-        const commonTooltipOptions = {
-            callbacks: {
-                title: function(tooltipItems) {
-                    const item = tooltipItems[0];
-                    let label = item.chart.data.labels[item.dataIndex];
-                    return Array.isArray(label) ? label.join(' ') : label;
+        // --- UTILITY: Tooltip Config (Mandatory) ---
+        const tooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            return Array.isArray(label) ? label.join(' ') : label;
+                        }
+                    }
                 }
             }
         };
 
-        // --- CHART 1: Radar ---
-        new Chart(document.getElementById('powerRadarChart').getContext('2d'), {
+        // --- CHART 1: Squad Synergy Radar ---
+        const radarLabels = ['Kinetic Power', 'Sensory Sensitivity', 'Stealth/Camouflage', 'Authority/Dominance', 'Appetite Intensity'].map(l => wrapLabel(l, 16));
+        
+        new Chart(document.getElementById('squadRadarChart').getContext('2d'), {
             type: 'radar',
             data: {
-                labels: ['Kinetic Energy', 'Seismic Anchoring', 'Combat Speed', 'Derp Factor', 'Discipline'].map(l => wrapLabel(l, 16)),
-                datasets: [{
-                    label: 'Capability',
-                    data: [95, 90, 85, 100, 20],
-                    backgroundColor: 'rgba(78, 205, 196, 0.2)',
-                    borderColor: '#4ECDC4',
-                    pointBackgroundColor: '#FF6B6B'
-                }]
+                labels: radarLabels,
+                datasets: [
+                    {
+                        label: 'SOCKS',
+                        data: [95, 40, 60, 20, 70],
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                        pointBackgroundColor: '#FF6B6B'
+                    },
+                    {
+                        label: 'JAKE',
+                        data: [60, 95, 85, 10, 20],
+                        borderColor: '#8E44AD',
+                        backgroundColor: 'rgba(142, 68, 173, 0.2)',
+                        pointBackgroundColor: '#8E44AD'
+                    },
+                    {
+                        label: 'CLEO',
+                        data: [40, 70, 90, 100, 100],
+                        borderColor: '#E91E63',
+                        backgroundColor: 'rgba(233, 30, 99, 0.2)',
+                        pointBackgroundColor: '#E91E63'
+                    }
+                ]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
-                scales: { r: { suggestedMin: 0, suggestedMax: 100 } }
-            }
-        });
-
-        // --- CHART 2: Bar ---
-        new Chart(document.getElementById('missionBarChart').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Pound Master', 'Syndicate', 'Vacuum Cleaner', 'Mailman'].map(l => wrapLabel(l, 16)),
-                datasets: [{
-                    data: [100, 100, 15, 60],
-                    backgroundColor: ['#4ECDC4', '#4ECDC4', '#FF6B6B', '#FFE66D']
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
-                scales: { y: { beginAtZero: true, max: 100 } }
-            }
-        });
-
-        // --- CHART 3: Donut ---
-        new Chart(document.getElementById('weaknessDonutChart').getContext('2d'), {
-            type: 'doughnut',
-            data: {
-                labels: ['Sensory Overload', 'Overheating', 'Distractions'].map(l => wrapLabel(l, 16)),
-                datasets: [{
-                    data: [45, 25, 30],
-                    backgroundColor: ['#FF6B6B', '#FFE66D', '#4ECDC4']
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: { 
-                    legend: { position: 'bottom', labels: { usePointStyle: true } },
-                    tooltip: commonTooltipOptions 
+                ...tooltipConfig,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: { display: false },
+                        grid: { color: 'rgba(0,0,0,0.05)' },
+                        angleLines: { color: 'rgba(0,0,0,0.1)' },
+                        pointLabels: {
+                            font: { size: 10, weight: 'bold', family: 'Roboto' },
+                            color: '#292F36'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom', labels: { usePointStyle: true, padding: 20 } },
+                    ...tooltipConfig.plugins
                 }
             }
         });
 
-        // --- PLOTLY: Energy ---
-        const trace1 = {
-            x: ['6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM', '12 AM'],
-            y: [10, 40, 95, 20, 50, 85, 15],
-            fill: 'tozeroy',
-            type: 'scatter',
-            mode: 'lines+markers',
-            line: { shape: 'spline', color: '#4ECDC4', width: 3 },
-            marker: { color: '#FF6B6B' }
-        };
-        Plotly.newPlot('energyScatterPlot', [trace1], {
-            margin: { t: 20, r: 20, b: 40, l: 40 },
-            xaxis: { fixedrange: true },
-            yaxis: { fixedrange: true, range: [0, 110] },
-            paper_bgcolor: 'rgba(0,0,0,0)',
-            plot_bgcolor: 'rgba(0,0,0,0)'
-        }, { responsive: true, displayModeBar: false });
+        // --- CHART 2: Collective Strength Bar ---
+        const barLabels = ['Strategic Oversight', 'Reconnaissance', 'Shock & Awe', 'Food Procurement'].map(l => wrapLabel(l, 16));
+
+        new Chart(document.getElementById('strengthBarChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: barLabels,
+                datasets: [{
+                    label: 'Efficiency Rating (%)',
+                    data: [100, 92, 88, 98],
+                    backgroundColor: ['#E91E63', '#8E44AD', '#FF6B6B', '#4ECDC4'],
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                ...tooltipConfig,
+                plugins: {
+                    legend: { display: false },
+                    ...tooltipConfig.plugins
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 100, grid: { color: '#f1f5f9' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
     </script>
 </body>
 </html>
