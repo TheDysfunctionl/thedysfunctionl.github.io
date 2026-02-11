@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Profile: The Shadow Overlord</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        
+        /* Palette: Sinister & Sophisticated (Magenta, Purple, Black) */
+        :root {
+            --color-primary: #E91E63;   /* Electric Magenta */
+            --color-secondary: #9C27B0; /* Royal Purple */
+            --color-accent: #FFC107;    /* Amber/Gold */
+            --color-dark: #121212;      /* Obsidian Black */
+            --color-light: #FCE4EC;     /* Soft Pink */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; 
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container { height: 300px; }
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-primary);
+            z-index: 0;
+        }
+
+        .stat-card {
+            transition: transform 0.2s ease-in-out;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .villain-box {
+            background-color: #1a1c1e;
+            border-left: 4px solid var(--color-primary);
+            padding: 1rem;
+            font-family: monospace;
+            color: #E91E63;
+            font-size: 0.875rem;
+        }
+
+        .overlord-glow {
+            box-shadow: 0 0 40px rgba(233, 30, 99, 0.3);
+        }
+
+        .bowl-sector {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+            border: 8px solid var(--color-dark);
+            position: relative;
+            background: #eee;
+        }
+        .bowl-bottom {
+            height: 60px;
+            width: 60px;
+            background: #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <!-- 
+        Palette Used: "Vibrant Villainy" 
+        Colors: #E91E63 (Magenta), #9C27B0 (Purple), #FFC107 (Gold), #121212 (Dark)
+    -->
+    <!-- 
+        Narrative Plan:
+        1. Header: Establish the "Shadow Overlord" authority.
+        2. Intro: The 8KG Boss.
+        3. Metrics: Dominance matrix and Dog-Bullying stats.
+        4. Dietary Logic: The "Visible Bottom = Empty" crisis chart.
+        5. Origin: The Nipple Incident (Bottle-feeding backstory).
+        6. Conclusion: The Toes Obsession warning.
+    -->
+    <!-- 
+        Confirmations:
+        NO SVG used.
+        NO Mermaid JS used.
+        All diagrams built with HTML/CSS.
+        Charts use Canvas.
+    -->
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Header Section -->
+    <header class="bg-[#121212] text-white shadow-xl sticky top-0 z-50 border-b-4 border-[#E91E63]">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-black tracking-tighter uppercase"><span class="text-[#E91E63]">Overlord:</span> CLEO</h1>
+                <p class="text-sm text-slate-400">Codename: The Shadow Boss | Status: Supreme Leader</p>
+            </div>
+            <div class="hidden md:block text-right">
+                <span class="bg-[#E91E63] px-3 py-1 rounded text-xs font-bold uppercase tracking-widest block">Level: God-Tier</span>
+                <span class="text-[10px] text-slate-500 font-mono">FILE_ID: 001-ALPHA</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Section 1: Hero Visualization & Hook -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 order-2 lg:order-1 space-y-6">
+                <div class="bg-white rounded-xl shadow-lg p-8 border-l-8 border-[#9C27B0]">
+                    <h2 class="text-2xl font-bold mb-4 text-[#121212]">The Real Boss</h2>
+                    <p class="text-lg leading-relaxed text-slate-600 mb-4">
+                        Subject "Cleo" is the undisputed primary authority of the household. Despite her 8KG "chunky" classification, she possesses a tactical speed that belies her mass, specifically when targeting human digits (toes).
+                    </p>
+                    <p class="text-lg leading-relaxed text-slate-600">
+                        She maintains a regime of terror over subordinates "Socks" and "Jake," ensuring that the feline hierarchy remains absolute. Her temperament is highly volatile, triggered primarily by suboptimal food distribution.
+                    </p>
+                </div>
+                <div class="villain-box">
+                    <div class="text-[#FFC107] mb-1 font-bold">> STATUS: HUNGRY (BOWL_VISIBILITY_DETECTION)</div>
+                    <div>> MASS_INDEX: 8.0 KG (UNIT_CHONK)</div>
+                    <div>> BULLY_PROTOCOL: ACTIVE (DOGS_REPRESSED)</div>
+                    <div>> TOE_LOCK_ON: 100% ACCURACY</div>
+                </div>
+            </div>
+            <div class="lg:col-span-7 order-1 lg:order-2">
+                <div class="relative group">
+                    <div class="aspect-[4/3] bg-[#121212] rounded-2xl overflow-hidden shadow-2xl overlord-glow border-4 border-[#E91E63]">
+                        <img 
+                            src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Gemini_Generated_Image_w2qtcew2qtcew2qt.png" 
+                            alt="Cleo, The Shadow Overlord" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onload="this.style.opacity='1';"
+                            style="opacity: 0; transition: opacity 0.5s;"
+                        >
+                    </div>
+                    <!-- Comic Label -->
+                    <div class="absolute bottom-6 left-6 bg-[#E91E63] text-white px-6 py-2 rounded-lg font-black text-2xl italic skew-x-[-12deg] shadow-lg border-2 border-white">
+                        TOE-CRUNCH!
+                    </div>
+                    <div class="absolute top-4 right-4 bg-[#121212]/80 backdrop-blur-sm text-[#FFC107] px-3 py-1 rounded font-mono text-xs border border-[#FFC107]">
+                        REC_001_OVERLORD
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Core Metrics Row -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-[#9C27B0] rounded-xl shadow-md p-8 text-white flex flex-col justify-center items-center text-center stat-card border-b-4 border-white">
+                <div class="text-6xl font-black mb-2">8.0 KG</div>
+                <div class="text-xl font-bold uppercase tracking-wide">Chunky Index</div>
+                <p class="mt-2 text-sm opacity-90">Maximized mass for optimal sitting-on-things capability.</p>
+            </div>
+            <div class="bg-[#121212] rounded-xl shadow-md p-8 text-[#E91E63] flex flex-col justify-center items-center text-center stat-card border-b-4 border-[#E91E63]">
+                <div class="text-6xl font-black mb-2">100%</div>
+                <div class="text-xl font-bold uppercase tracking-wide">House Authority</div>
+                <p class="mt-2 text-sm opacity-90">The dogs were consulted; they have no comment and are hiding.</p>
+            </div>
+            <div class="bg-[#FFC107] rounded-xl shadow-md p-8 text-[#121212] flex flex-col justify-center items-center text-center stat-card border-b-4 border-white">
+                <div class="text-6xl font-black mb-2">5 sec</div>
+                <div class="text-xl font-bold uppercase tracking-wide">Temper Fuse</div>
+                <p class="mt-2 text-sm opacity-90">Time from "nice pet" to "violent claw-strike" protocol.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: The Origin (Timeline) -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-[#121212] border-b-2 border-slate-200 pb-2">The Ascension</h2>
+                <p class="mt-2 text-slate-600">How a bottle-fed orphan became the supreme dictator of the household.</p>
+            </div>
+            
+            <div class="relative py-10">
+                <div class="hidden md:block timeline-line rounded-full"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                    <!-- Event 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#9C27B0]">
+                        <h3 class="font-bold text-lg text-[#E91E63]">The Rescue Adoption</h3>
+                        <p class="text-xs text-slate-500 font-mono mb-2">Age: Neonatal | Status: Fragile</p>
+                        <p class="text-sm">Subject rescued at extremely young age. Vulnerability levels high, but authority instincts already manifest.</p>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <!-- Event 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:ml-10 relative border-t-4 border-[#E91E63]">
+                        <h3 class="font-bold text-lg text-[#121212]">The Nipple Incident</h3>
+                        <p class="text-xs text-slate-500 font-mono mb-2">Event: Feeding Refusal</p>
+                        <p class="text-sm">Subject "chewed the teat off" the bottle during feeding. First official act of violent rebellion against the system.</p>
+                    </div>
+                    <!-- Event 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#FFC107]">
+                        <h3 class="font-bold text-lg text-[#121212]">Domestic Coup</h3>
+                        <p class="text-xs text-slate-500 font-mono mb-2">Status: In Charge</p>
+                        <p class="text-sm">Integration into domestic population. Subjugation of previous residents (Humans and Canines) completed within 24 hours.</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Behavioral Analysis (Charts) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-[#121212] mb-2">Dominance Capability Radar</h3>
+                <p class="text-sm text-slate-500 mb-6">Quantifying the threat levels across five core super-villain categories.</p>
+                <div class="chart-container">
+                    <canvas id="cleoRadarChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-xl font-bold text-[#121212] mb-2">Dog Bullying Statistics</h3>
+                <p class="text-sm text-slate-500 mb-6">Comparing daily tactical suppression of subordinates Socks and Jake.</p>
+                <div class="chart-container">
+                    <canvas id="bullyBarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Dietary Crisis Logic (The Bowl Horizon) -->
+        <section class="bg-[#121212] rounded-xl shadow-xl p-8 text-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-[#FFC107] mb-4">The "Bowl Horizon" Logic</h3>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Cleo operates on a binary dietary state. Scientific observation reveals that if more than 5% of the bowl's bottom surface is visible, her sensors trigger a "STATE: STARVING" alert, regardless of actual food volume.
+                    </p>
+                    <div class="bg-[#E91E63]/20 p-4 rounded-lg border-l-4 border-[#E91E63]">
+                        <span class="font-bold">CRITICAL ALERT:</span>
+                        <p class="text-sm italic">"If I can see the porcelain, the famine has begun." — Cleo</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <!-- HTML/CSS Diagram for the Bowl -->
+                    <div class="bowl-sector flex items-center justify-center">
+                        <div class="bowl-bottom border-2 border-dashed border-[#E91E63] flex items-center justify-center">
+                            <span class="text-[8px] text-[#E91E63] font-bold text-center">VISIBLE<br>BOTTOM</span>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <span class="text-2xl font-black text-[#E91E63]">STATUS: EMPTY</span>
+                        <p class="text-xs opacity-50 uppercase tracking-widest">(Actual Volume: 50% Full)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Tactical Features -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+             <div class="bg-white rounded-xl shadow-md p-6 h-full">
+                <h3 class="text-xl font-bold text-[#121212] mb-2">Temperament Oscillation</h3>
+                <p class="text-sm text-slate-500 mb-6">Volatility tracking of mood states throughout the day.</p>
+                <div id="moodPlot" class="w-full h-[350px]"></div>
+            </div>
+            <div class="space-y-6">
+                 <div class="bg-white border-2 border-[#E91E63] p-6 rounded-xl shadow-lg">
+                    <h4 class="text-lg font-bold text-[#E91E63] mb-1">Toe Obsession Protocol</h4>
+                    <p class="text-sm text-slate-600">
+                        Primary tactical focus. Subject views all human toes as high-priority hostile targets or play-units. Accuracy rating: 98.7%.
+                    </p>
+                 </div>
+                 <div class="bg-white border-2 border-[#9C27B0] p-6 rounded-xl shadow-lg">
+                    <h4 class="text-lg font-bold text-[#9C27B0] mb-1">Chunky-Aura Deflection</h4>
+                    <p class="text-sm text-slate-600">
+                        At 8KG, Cleo utilizes gravitational dominance to claim any seat, keyboard, or warm surface, effectively disabling human productivity.
+                    </p>
+                 </div>
+                 <div class="bg-white border-2 border-[#FFC107] p-6 rounded-xl shadow-lg">
+                    <h4 class="text-lg font-bold text-[#121212] mb-1">The Sibling Hierarchy</h4>
+                    <p class="text-sm text-slate-600">
+                        <span class="font-bold text-[#9C27B0]">Jake:</span> Disregarded (Large Target).<br>
+                        <span class="font-bold text-[#2ECC71]">Socks:</span> Bullied (High-Frequency Prey).
+                    </p>
+                 </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-10 text-slate-400 border-t border-slate-200 mt-8">
+            <p>&copy; 2023 Aether-Tech Facility Archives | Bio-Subject: "Cleo" (Overlord)</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- UTILITY ---
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // --- CHART 1: Radar (Capability) ---
+        new Chart(document.getElementById('cleoRadarChart').getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: ['Toe Obsession', 'Temper/Volatility', 'Mass (8KG)', 'Dog Subjugation', 'Bowl Anxiety'].map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Overlord Metrics',
+                    data: [100, 95, 80, 100, 100],
+                    backgroundColor: 'rgba(233, 30, 99, 0.2)',
+                    borderColor: '#E91E63',
+                    pointBackgroundColor: '#9C27B0'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
+                scales: { r: { suggestedMin: 0, suggestedMax: 100, ticks: { display: false } } }
+            }
+        });
+
+        // --- CHART 2: Bullying Bar Chart ---
+        new Chart(document.getElementById('bullyBarChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Socks (The Tank)', 'Jake (The Sissy)', 'Human Feet', 'Invisible Goblins'].map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Daily Bullying Incidence',
+                    data: [90, 45, 75, 30],
+                    backgroundColor: ['#9C27B0', '#E91E63', '#FFC107', '#121212'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
+                scales: { 
+                    y: { beginAtZero: true, grid: { color: '#f1f1f1' } },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // --- PLOTLY: Mood Volatility ---
+        const trace1 = {
+            x: ['8 AM', '10 AM', '12 PM', '2 PM', '4 PM', '6 PM', '8 PM'],
+            y: [20, 100, 40, 10, 80, 100, 30], // Temper/Energy level
+            type: 'scatter',
+            mode: 'lines+markers',
+            fill: 'tonexty',
+            line: { shape: 'spline', color: '#E91E63', width: 4 },
+            marker: { color: '#9C27B0', size: 10 },
+            name: 'Temper Fuse'
+        };
+        Plotly.newPlot('moodPlot', [trace1], {
+            margin: { t: 20, r: 20, b: 40, l: 40 },
+            xaxis: { fixedrange: true, gridcolor: '#eee' },
+            yaxis: { fixedrange: true, title: 'Temper Level (%)', gridcolor: '#eee' },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            font: { family: 'Roboto, sans-serif' }
+        }, { responsive: true, displayModeBar: false });
+    </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subject Profile: The Vibration Vanguard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Roboto', sans-serif; }
+        
+        /* Palette: Vibrant & Energetic (Purple, Lime, Gold) */
+        :root {
+            --color-primary: #8E44AD;   /* Deep Purple */
+            --color-secondary: #2ECC71; /* Lime Green */
+            --color-accent: #F1C40F;    /* Gold/Yellow */
+            --color-dark: #2C3E50;      /* Midnight Blue */
+            --color-light: #ECF0F1;     /* Clouds */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; 
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; 
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container { height: 300px; }
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-secondary);
+            z-index: 0;
+        }
+
+        .stat-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .terminal-box {
+            background-color: #1a1c1e;
+            border-left: 4px solid var(--color-secondary);
+            padding: 1rem;
+            font-family: monospace;
+            color: #2ECC71;
+            font-size: 0.875rem;
+        }
+
+        .velcro-glow {
+            box-shadow: 0 0 30px rgba(142, 68, 173, 0.4);
+        }
+    </style>
+    <!-- 
+        Confirmations:
+        NO SVG used.
+        NO Mermaid JS used.
+        All diagrams built with HTML/CSS.
+        Charts use Canvas via Chart.js/Plotly.
+    -->
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <!-- Header Section -->
+    <header class="bg-[#2C3E50] text-white shadow-lg sticky top-0 z-50 border-b-4 border-[#8E44AD]">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-black tracking-wider uppercase"><span class="text-[#2ECC71]">Project:</span> JAKE</h1>
+                <p class="text-sm text-gray-400">Codename: The Vibration Vanguard | Clearance: Top Secret</p>
+            </div>
+            <div class="hidden md:block text-right">
+                <span class="bg-[#8E44AD] px-3 py-1 rounded text-xs font-bold uppercase tracking-widest block">Status: Active</span>
+                <span class="text-[10px] text-gray-500 font-mono">FILE_ID: 104-GAMMA</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+
+        <!-- Section 1: Hero Visualization & Hook -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-5 order-2 lg:order-1 space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-8 border-l-8 border-[#F1C40F]">
+                    <h2 class="text-2xl font-bold mb-4 text-[#2C3E50]">Subject Overview</h2>
+                    <p class="text-lg leading-relaxed text-gray-600 mb-4">
+                        Subject "Jake" is a high-frequency specialist whose sensitive nature is a manifestation of an ultra-tuned nervous system. He detects microscopic vibrations (insects) long before standard sensors.
+                    </p>
+                    <p class="text-lg leading-relaxed text-gray-600">
+                        A survivor of the "Wildwood Bush," Jake has rejected traditional synthetic fuel (pellets) in favor of bio-organic chitin harvesting. He operates as a "Velcro" class companion, maintaining 100% proximity to his primary human contact.
+                    </p>
+                </div>
+                <div class="terminal-box">
+                    <div class="text-[#F1C40F] mb-1 font-bold">> SCANNING MICRO-FLORA...</div>
+                    <div>> CHITIN_INTAKE: OPTIMAL (CRICKET_DETECTED)</div>
+                    <div>> VELCRO_BOND: REINFORCED (HUMAN_MOM)</div>
+                    <div>> SIBLING_SYNERGY: LINKED_WITH_SOCKS</div>
+                </div>
+            </div>
+            <div class="lg:col-span-7 order-1 lg:order-2">
+                <div class="relative group">
+                    <div class="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden shadow-2xl velcro-glow border-4 border-[#8E44AD]">
+                        <img 
+                            src="https://thedysfunctionl.co.za/wp-content/uploads/2026/02/Jake.png" 
+                            alt="Jake the Vibration Vanguard" 
+                            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            onload="this.style.opacity='1';"
+                            style="opacity: 0; transition: opacity 0.5s;"
+                        >
+                    </div>
+                    <!-- Comic Label -->
+                    <div class="absolute bottom-6 left-6 bg-[#8E44AD] text-white px-6 py-2 rounded-lg font-black text-2xl italic skew-x-[-12deg] shadow-lg border-2 border-white">
+                        VIBE-STRIKE!
+                    </div>
+                    <div class="absolute top-4 right-4 bg-[#2C3E50]/80 backdrop-blur-sm text-[#2ECC71] px-3 py-1 rounded font-mono text-xs border border-[#2ECC71]">
+                        REC_881_WILDWOOD
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Core Metrics Row -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-[#8E44AD] rounded-xl shadow-md p-8 text-white flex flex-col justify-center items-center text-center stat-card">
+                <div class="text-6xl font-black mb-2">10Hz</div>
+                <div class="text-xl font-bold uppercase tracking-wide">Sensory Threshold</div>
+                <p class="mt-2 text-sm opacity-90">Can detect a cricket's movement from three rooms away.</p>
+            </div>
+            <div class="bg-[#2ECC71] rounded-xl shadow-md p-8 text-[#2C3E50] flex flex-col justify-center items-center text-center stat-card">
+                <div class="text-6xl font-black mb-2">9.5/10</div>
+                <div class="text-xl font-bold uppercase tracking-wide">Velcro Bond</div>
+                <p class="mt-2 text-sm opacity-90">Maximum adherence to human mother maintained 24/7.</p>
+            </div>
+            <div class="bg-[#F1C40F] rounded-xl shadow-md p-8 text-[#2C3E50] flex flex-col justify-center items-center text-center stat-card">
+                <div class="text-6xl font-black mb-2">400 PSI</div>
+                <div class="text-xl font-bold uppercase tracking-wide">Landshark Bite</div>
+                <p class="mt-2 text-sm opacity-90">Oral analysis protocol: everything enters the mouth for testing.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Origin Timeline (Structured HTML) -->
+        <section>
+            <div class="mb-6">
+                <h2 class="text-2xl font-bold text-[#2C3E50] border-b-2 border-gray-200 pb-2">Operational Timeline</h2>
+                <p class="mt-2 text-gray-600">Reconstruction of the Wildwood Bush discovery and subsequent integration.</p>
+            </div>
+            
+            <div class="relative py-10">
+                <div class="hidden md:block timeline-line rounded-full"></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
+                    <!-- Event 1 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#8E44AD]">
+                        <h3 class="font-bold text-lg text-[#8E44AD]">The Bush Discovery</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-2">Location: Wildwood Undergrowth</p>
+                        <p class="text-sm">Subject found in thick brush with sibling. Survival status: Critical but High-Energy.</p>
+                    </div>
+                    <div></div>
+                    <div></div>
+                    <!-- Event 2 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:ml-10 relative border-t-4 border-[#2ECC71]">
+                        <h3 class="font-bold text-lg text-[#2C3E50]">The Velcro Transition</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-2">Status: Bonding Imprinting</p>
+                        <p class="text-sm">Subject identifies human mother as primary gravity source. Proximity lock established.</p>
+                    </div>
+                    <!-- Event 3 -->
+                    <div class="bg-white p-6 rounded-lg shadow-md md:mr-10 relative border-t-4 border-[#F1C40F]">
+                        <h3 class="font-bold text-lg text-[#2C3E50]">Sibling Synergy</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-2">Unit: The K9 Duo</p>
+                        <p class="text-sm">Jake forms a tactical alliance with Subject: Socks. Sibling bond optimizes morale.</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Behavioral Analysis (Charts) -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#2C3E50] mb-2">Capability Radar</h3>
+                <p class="text-sm text-gray-500 mb-6">Subject exhibits extreme scores in "Proximity" and "Mouthiness" (Landshark status).</p>
+                <div class="chart-container">
+                    <canvas id="jakeRadarChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-xl font-bold text-[#2C3E50] mb-2">High-Frequency Bug Detection</h3>
+                <p class="text-sm text-gray-500 mb-6">Tracking detection events in the backyard biosphere.</p>
+                <div id="bugDetectionPlot" class="w-full h-[350px]"></div>
+            </div>
+        </section>
+
+        <!-- Section 5: Diet & Landshark Protocol -->
+        <section class="bg-white rounded-xl shadow-md p-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-[#2C3E50] mb-4">Dietary Preference Matrix</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                        Pellet intake remains at 5% efficiency. Subject primarily targets crunchy beetles and crickets, treating everything else as "oral testing material."
+                    </p>
+                    <div class="space-y-4">
+                        <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-[#2ECC71]">
+                            <span class="font-bold text-[#2C3E50]">Bug Consumption:</span>
+                            <div class="text-2xl font-black text-[#2ECC71]">95%</div>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg border-l-4 border-[#8E44AD]">
+                            <span class="font-bold text-[#2C3E50]">Pellet Interest:</span>
+                            <div class="text-2xl font-black text-[#8E44AD]">5%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                     <div class="chart-container">
+                        <canvas id="dietBarChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Synergies & Features -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+             <div class="bg-white rounded-xl shadow-md p-6 h-full">
+                <h3 class="text-xl font-bold text-[#2C3E50] mb-2">Velcro Adhesion Distribution</h3>
+                <p class="text-sm text-gray-500 mb-6">Where Jake spends his tactical energy hours.</p>
+                <div class="chart-container">
+                    <canvas id="velcroDonutChart"></canvas>
+                </div>
+            </div>
+            <div class="space-y-6">
+                 <div class="bg-[#2C3E50] text-white p-6 rounded-xl shadow-lg border-l-8 border-[#2ECC71]">
+                    <h4 class="text-lg font-bold text-[#2ECC71] mb-1">Sibling Synergy: Socks</h4>
+                    <p class="text-xs font-light opacity-80">Jake adores his adoptive brother. When paired with Socks, Jake's bravery rating increases by 40%.</p>
+                 </div>
+                 <div class="bg-[#2C3E50] text-white p-6 rounded-xl shadow-lg border-l-8 border-[#F1C40F]">
+                    <h4 class="text-lg font-bold text-[#F1C40F] mb-1">Landshark Oral Analysis</h4>
+                    <p class="text-xs font-light opacity-80">Biological imperative to test objects via mouth. Primary targets: Hands, toes, pillows, and small flying adversaries.</p>
+                 </div>
+                 <div class="bg-[#2C3E50] text-white p-6 rounded-xl shadow-lg border-l-8 border-[#8E44AD]">
+                    <h4 class="text-lg font-bold text-[#8E44AD] mb-1">The "Sissy" Cloak</h4>
+                    <p class="text-xs font-light opacity-80">Tactical deception. By appearing sensitive, the subject encourages human maternal protection while covertly scanning for bugs.</p>
+                 </div>
+            </div>
+        </section>
+
+        <footer class="text-center py-10 text-gray-500 border-t border-gray-200 mt-8">
+            <p>&copy; 2023 Aether-Tech Facility Archives | Bio-Subject: "Jake"</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- UTILITY ---
+        function wrapLabel(str, maxChars) {
+            if (str.length <= maxChars) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= maxChars) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    return Array.isArray(label) ? label.join(' ') : label;
+                }
+            }
+        };
+
+        // --- CHART 1: Radar ---
+        new Chart(document.getElementById('jakeRadarChart').getContext('2d'), {
+            type: 'radar',
+            data: {
+                labels: ['Sensitivity', 'Velcro Adhesion', 'Landshark Power', 'Bug Hunting', 'Pellet Tolerance'].map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Jake Potential',
+                    data: [100, 95, 80, 90, 5],
+                    backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                    borderColor: '#2ECC71',
+                    pointBackgroundColor: '#8E44AD'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
+                scales: { r: { suggestedMin: 0, suggestedMax: 100 } }
+            }
+        });
+
+        // --- CHART 2: Diet Bar ---
+        new Chart(document.getElementById('dietBarChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Crunchy Beetles', 'Pellets (Boring)', 'Socks\' Tail', 'Human Toes', 'Pillows'].map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    label: 'Mouth Engagement %',
+                    data: [100, 5, 40, 60, 30],
+                    backgroundColor: ['#2ECC71', '#2C3E50', '#8E44AD', '#F1C40F', '#8E44AD']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false }, tooltip: commonTooltipOptions },
+                scales: { y: { beginAtZero: true, max: 100 } }
+            }
+        });
+
+        // --- CHART 3: Donut ---
+        new Chart(document.getElementById('velcroDonutChart').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Touching Mom', 'Shadowing Socks', 'Hunting Bugs', 'Sleeping'].map(l => wrapLabel(l, 16)),
+                datasets: [{
+                    data: [60, 20, 15, 5],
+                    backgroundColor: ['#8E44AD', '#2ECC71', '#F1C40F', '#2C3E50']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' }, tooltip: commonTooltipOptions }
+            }
+        });
+
+        // --- PLOTLY: High Frequency ---
+        const trace1 = {
+            x: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            y: [5, 12, 8, 15, 20, 25, 18],
+            fill: 'tonexty',
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { shape: 'hv', color: '#2ECC71', width: 3 },
+            marker: { color: '#8E44AD' },
+            name: 'Bug Sighting'
+        };
+        Plotly.newPlot('bugDetectionPlot', [trace1], {
+            margin: { t: 20, r: 20, b: 40, l: 40 },
+            xaxis: { fixedrange: true },
+            yaxis: { fixedrange: true, title: 'Detections' },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)'
+        }, { responsive: true, displayModeBar: false });
+    </script>
+</body>
+</html>
